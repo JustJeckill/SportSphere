@@ -1,0 +1,50 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly",
+    "jQuery": "readonly",
+    "____leadUrl": "readonly",
+    "____hostname": "readonly",
+    "inputObjectCopy": "readonly",
+    "omQuery": "readonly",
+    "omUFormSession": "readonly",
+    "omLeadData": "readonly",
+    "omLeadDataParse": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./webpack.config.ts"
+      }
+    }
+  },
+  "rules": {
+    "curly": ["error", "all"],
+    "class-methods-use-this": ["off"],
+    "import/order": ["off"],
+    "indent": ["error", 4, { "SwitchCase": 1 }],
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-underscore-dangle": ["error", { "allowFunctionParams": true }],
+    "no-restricted-syntax": ["off"],
+    "object-curly-newline": ["error", { "ExportDeclaration": { "minProperties": 4 } }],
+    "quote-props": ["error", "as-needed", { "keywords": true }]
+  }
+}
