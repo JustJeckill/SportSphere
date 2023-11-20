@@ -24,6 +24,6 @@ export const configWebpack = (options: IConfigOptions) => {
         },
         plugins: configPlugins(options),
         devServer: isDev ? configDevServer(options) : undefined,
-        devtool: 'inline-source-map',
+        devtool: isDev && 'inline-source-map',
     }
 }

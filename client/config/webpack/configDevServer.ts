@@ -7,5 +7,6 @@ export function configDevServer(options: IConfigOptions): DevServerConfiguration
     return {
         port,
         open: true,
+        historyApiFallback: true,
     }
 }
