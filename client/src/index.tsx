@@ -5,6 +5,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import About from "./components/pages/About/About";
+import ErrorPage from "./components/elements/ErrorPage";
 
 
 const root = document.getElementById('root');
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
                 path: '/about',
                 element: <About />
             }
-        ]
+        ],
+        errorElement: <ErrorPage />
     },
 ]);
 
