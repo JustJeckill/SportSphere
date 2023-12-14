@@ -1,20 +1,16 @@
 import classes from './RegistrationModal.module.scss';
 import { useState } from "react";
-import { Formik, FormikErrors, FormikTouched } from "formik";
-import { IFormValues } from "./types";
+import { Formik, FormikErrors } from "formik";
+import { IFormSignInValues } from "./types";
 
 export const RegistrationModal = () => {
     const [isSignUp, setIsSignUp] = useState(false);
-
-    const title = isSignUp ? 'Sign Up' : 'Sign In';
-    const infoMode = isSignUp ? 'Already have account? Sign In' : 'No have account? Create it';
-    const changeModeButton = isSignUp ? 'Sign In' : 'Sign Up';
 
     const clickHandler = () => {
         setIsSignUp(!isSignUp);
     }
 
-    const submitFormHandler = (values: IFormValues, actions: any) => {
+    const submitFormHandler = (values: IFormSignInValues, actions: any) => {
         // console.log(values);
         // console.log(actions.setSubmitting);
         setTimeout(() => {
@@ -23,9 +19,9 @@ export const RegistrationModal = () => {
         }, 400);
     }
 
-    const validateForm = (values: IFormValues) => {
+    const validateForm = (values: IFormSignInValues) => {
         const { email, password } = values;
-        const errors: FormikErrors<IFormValues> = {};
+        const errors: FormikErrors<IFormSignInValues> = {};
 
         if (email.length < 1) {
             errors.email = 'Required';
@@ -42,7 +38,7 @@ export const RegistrationModal = () => {
         return errors;
     }
 
-    const initialValues: IFormValues = { email: '', password: '' };
+    const initialValues: IFormSignInValues = { email: '', password: '' };
 
     const isValidEmail = (email: string) => !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email);
     // min 8 letter password, with at least a symbol, upper and lower case letters and a number
