@@ -32,7 +32,7 @@ const RestorePasswordForm = () => {
     const isValidEmail = (email: string) => !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email);
 
     return(
-        <div className={classes.modal__content}>
+        <>
             <h2 className={classes.modal__title}>Restore Password</h2>
 
             { /*or use useFormik hook*/ }
@@ -63,13 +63,13 @@ const RestorePasswordForm = () => {
                             { errors.email && touched.email && <span>{ errors.email }</span> }
 
                             <button type="submit" disabled={isSubmitting}>
-                                Submit
+                                Restore Password
                             </button>
                         </form>
                     )
                 }}
             </Formik>
-        </div>
+        </>
     )
 }
 

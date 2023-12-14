@@ -41,8 +41,8 @@ const SignInForm = () => {
     const isValidPassword = (password: string) => !/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/i.test(password);
 
     return(
-        <div className={classes.modal__content}>
-            <h2 className={classes.modal__title}>Sign in to your account</h2>
+        <>
+            <h2 className={classes.modal__title}>Sign into account</h2>
 
             { /*or use useFormik hook*/ }
             <Formik
@@ -79,13 +79,13 @@ const SignInForm = () => {
                             />
                             { errors.password && touched.password && <span>{ errors.password }</span> }
                             <button type="submit" disabled={isSubmitting}>
-                                Submit
+                                Enter into account
                             </button>
                         </form>
                     )
                 }}
             </Formik>
-        </div>
+        </>
     )
 }
 

@@ -17,8 +17,12 @@ const SignUpForm = () => {
     }
 
     const validateForm = (values: IFormSignUpValues) => {
-        const { email, password, passwordConfirm } = values;
+        const { email, name, password, passwordConfirm } = values;
         const errors: FormikErrors<IFormSignUpValues> = {};
+
+        if (name.length < 1) {
+            errors.name = 'Required';
+        }
 
         if (email.length < 1) {
             errors.email = 'Required';
@@ -55,7 +59,7 @@ const SignUpForm = () => {
     // нужно поубирать пробелы, возможно, использовать маску
 
     return(
-        <div className={classes.modal__content}>
+        <>
             <h2 className={classes.modal__title}>Create your account</h2>
 
             { /*or use useFormik hook*/ }
@@ -85,6 +89,14 @@ const SignUpForm = () => {
                             />
                             { errors.email && touched.email && <span>{ errors.email }</span> }
                             <input
+                                type="text"
+                                name="name"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.name}
+                            />
+                            { errors.name && touched.name && <span>{ errors.name }</span> }
+                            <input
                                 type="password"
                                 name="password"
                                 onChange={handleChange}
@@ -92,14 +104,22 @@ const SignUpForm = () => {
                                 value={values.password}
                             />
                             { errors.password && touched.password && <span>{ errors.password }</span> }
+                            <input
+                                type="password"
+                                name="passwordConfirm"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.passwordConfirm}
+                            />
+                            { errors.passwordConfirm && touched.passwordConfirm && <span>{ errors.passwordConfirm }</span> }
                             <button type="submit" disabled={isSubmitting}>
-                                Submit
+                                Create account
                             </button>
                         </form>
                     )
                 }}
             </Formik>
-        </div>
+        </>
     )
 }
 
